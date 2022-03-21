@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+import ActionButton from 'react-native-action-button';
 import {
   SafeAreaView,
   Text,
@@ -7,8 +8,9 @@ import {
   Image,
   Pressable,
   Dimensions,
+  TouchableOpacity,
 } from "react-native";
-import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 import Colors from "../../assets/colors/colors";
 import HomeStyles from "./HomeScreenStyles";
 import SearchBar from "../SearchBar/SerachBar";
@@ -63,7 +65,6 @@ const Home = ({ navigation }) => {
             </Pressable>
           )}
         />
-      
     </SafeAreaView>
   );
 };

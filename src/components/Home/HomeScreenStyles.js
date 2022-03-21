@@ -20,7 +20,8 @@ const HomeStyles = StyleSheet.create({
     contentontainerStyle:{
         paddingLeft: 20,
         paddingVertical: 20
-    }
+    },
+    
 })
 
 export default HomeStyles;

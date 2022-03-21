@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, Image, StyleSheet, ScrollView} from 'react-native';
 import FormInput from '../Input/FormInput';
 import FormButton from '../Buttons/FormButton';
 import DismissKeyboard from '../../utils/DismissKeyboard';
@@ -15,8 +15,18 @@ const SignUpScreen = ({navigation}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
-  const [firstName , setFirstName] = useState();
-  const [lastName , setLastName] = useState();
+  const [hotelName , setHotelName] = useState();
+  const [city , setCity] = useState();
+  const [description, setDescription] = useState();
+  const [address, setAddress] = useState(); 
+  const [star_rating, setStar_Rating] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
+  const [town, setTown] = useState();
+  const [couple, setCouple] = useState();
+  const [single, setSingle] = useState();
+  const [superDeluxe, setSuperDeluxe] = useState();
+  const [deluxe, setDeluxe] = useState();
+  const [luxury, setLuxury] = useState();
 
   const getMyObject = async () => {
     try {
@@ -33,11 +43,21 @@ const SignUpScreen = ({navigation}) => {
   // const {login} = useContext(AuthContext);
   const handleSubmit = () => { 
     var details = {
-      firstName: firstName,
-			lastName: lastName,
 			username: email,
       password: password,
       verifyPassword: confirmPassword,
+      hotelName: hotelName,
+      city: city,
+      description: description,
+      star_rating: star_rating,
+      phoneNumber: phoneNumber,
+      address: address,
+      town: town,
+      couple: couple,
+      single: single,
+      superDeluxe: superDeluxe,
+      deluxe: deluxe,
+      luxury: luxury,
 
     }
     var formBody = [];
@@ -47,7 +67,7 @@ const SignUpScreen = ({navigation}) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://172.19.17.164:3000/registerCustomer', {
+    fetch('http://172.19.17.164:3000//registerHotel', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -62,87 +82,148 @@ const SignUpScreen = ({navigation}) => {
 			.catch((error)=>{
 				console.error(error);
 			});console.log( JSON.stringify({
-				firstName: firstName,
-			lastName: lastName,
-			username: email,
-      password: password,
-      verifyPassword: confirmPassword,
+        username: email,
+        password: password,
+        verifyPassword: confirmPassword,
+        hotelName: hotelName,
+        city: city,
+        description: description,
+        star_rating: star_rating,
+        phoneNumber: phoneNumber,
+        address: address,
+        town: town,
+        couple: couple,
+        single: single,
+        superDeluxe: superDeluxe,
+        deluxe: deluxe,
+        luxury: luxury,
+  
 			})
      )
 }
  
   return (
     <DismissKeyboard>
-    <View style={SignUpStyles.container}>
-      <Text style={SignUpStyles.text}>Signup</Text>
-      <FormInput
-        labelValue={firstName}
-        onChangeText={(firstName) => setFirstName(firstName)}
-        placeholderText="First Name"
-        iconType="pencil"
-      />
-      
-      <FormInput
-        labelValue={lastName}
-        onChangeText={(lastName) => setLastName(lastName)}
-        placeholderText="Last Name"
-        iconType="pencil"
-      />
-
-      <FormInput 
-        labelValue={email}
-        onChangeText={(userEmail) => setEmail(userEmail)}
-        placeholderText="Email"
-        iconType="user-o"
-        keyboardType="email-address"
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
-
-      <FormInput 
-        labelValue={password}
-        onChangeText={(userPassword) => setPassword(userPassword)}
-        placeholderText="Password"
-        iconType="lock"
-        secureTextEntry={true}
-      />
-
-      <FormInput
-        labelValue={confirmPassword}
-        onChangeText={(userPassword) => setConfirmPassword(userPassword)}
-        placeholderText="Confirm Password"
-        iconType="lock"
-        secureTextEntry={true}
-      />
-
-      <FormButton
-        buttonTitle="Sign Up"
-        onPress={() => handleSubmit() }
-      />
+        <View style={SignUpStyles.container}>
+        <ScrollView style={SignUpStyles.scrollView}>
+          <Text style={SignUpStyles.text}>Create New Hotel</Text>
+          <FormInput
+            labelValue={email}
+            onChangeText={(email) => setEmail(email)}
+            placeholderText="Username"
+            iconType="user-o"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoCorrect={false}
+            
+          />
+          
+          <FormInput 
+            labelValue={password}
+            onChangeText={(userPassword) => setPassword(userPassword)}
+            placeholderText="Password"
+            iconType="lock"
+            secureTextEntry={true}
+          />
     
-
-      <SocialButtons 
-        screen = {"signup"}
-        facebookButtonText= { "Continue with Facebook" }
-        googleButtonText= { "Continue with Google" }
-        googleButtonViewStyle= { SignUpStyles.googleSignInBackground} 
-        googleLogoStyle= {SignUpStyles.googleSignInBackground}
-        googleTextStyle= {SignUpStyles.googleSignInText}
-      
-      />
+          <FormInput
+            labelValue={confirmPassword}
+            onChangeText={(userPassword) => setConfirmPassword(userPassword)}
+            placeholderText="Confirm Password"
+            iconType="lock"
+            secureTextEntry={true}
+          />
+         <FormInput
+            labelValue={hotelName}
+            onChangeText={(hotelName) => setHotelName(hotelName)}
+            placeholderText="Hotel Name"
+            iconType="pencil"
+          />
     
-      
-      
+           <FormInput 
+            labelValue={city}
+            onChangeText={(city) => setCity(city)}
+            placeholderText="City"
+            iconType="pencil"
+            
+          />
+          <FormInput 
+            labelValue={town}
+            onChangeText={(town) => setTown(town)}
+            placeholderText="Town"
+            iconType="pencil"
+            
+          />
+          <FormInput 
+            labelValue={address}
+            onChangeText={(address) => setAddress(address)}
+            placeholderText="Address"
+            iconType="pencil"
+            
+          />
+          <FormInput 
+            labelValue={description}
+            onChangeText={(description) => setDescription(description)}
+            placeholderText="Description"
+            iconType="pencil"
+            
+          />
+          <FormInput 
+            labelValue={star_rating}
+            onChangeText={(star_rating) => setStar_Rating(star_rating)}
+            placeholderText="Star Rating"
+            iconType="pencil"
+            
+          />
+          <FormInput 
+            labelValue={phoneNumber}
+            onChangeText={(phoneNumber) => setPhoneNumber(phoneNumber)}
+            placeholderText="Phone-Number"
+            iconType="pencil"
+            
+          />
+          <FormInput 
+            labelValue={couple}
+            onChangeText={(couple) => setCouple(couple)}
+            placeholderText="Couple"
+            iconType="pencil"
+            
+          />
+          <FormInput 
+            labelValue={single}
+            onChangeText={(single) => setSingle(single)}
+            placeholderText="City"
+            iconType="pencil"
+            
+          />
+          <FormInput 
+            labelValue={superDeluxe}
+            onChangeText={(superDeluxe) => setSuperDeluxe(superDeluxe)}
+            placeholderText="SuperDeluxe"
+            iconType="pencil"
+            
+          />
+          <FormInput 
+            labelValue={deluxe}
+            onChangeText={(deluxe) => setDeluxe(deluxe)}
+            placeholderText="Deluxe"
+            iconType="pencil"
+            
+          />
+          <FormInput 
+            labelValue={luxury}
+            onChangeText={(luxury) => setLuxury(luxury)}
+            placeholderText="Luxury"
+            iconType="pencil"
+            
+          />
 
-      <TouchableOpacity
-        style={SignUpStyles.forgotButton}
-         onPress={() => navigation.navigate('Login')}
-        >
-        <Text style={SignUpStyles.navButtonText}>
-          Already have an account? Login here
-        </Text>
-      </TouchableOpacity>
-    </View>
+          <FormButton
+            buttonTitle="Sign Up"
+            onPress={() => navigation.navigate('Home') }
+          />
+          </ScrollView>
+           </View>
     </DismissKeyboard>
   );
 };

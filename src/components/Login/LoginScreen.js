@@ -30,7 +30,7 @@ const LoginScreen = ({navigation}) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://172.19.17.164:3000/loginCustomer', {
+    fetch('http://172.19.17.164:3000/loginHotel', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -64,7 +64,7 @@ const LoginScreen = ({navigation}) => {
         style={LoginStyles.logo}
         resizeMode='contain'
       />
-      <Text style={LoginStyles.text}>Hotel-1</Text>
+      <Text style={LoginStyles.text}>Hotel-1 Partner</Text>
 
       <FormInput
         labelValue={email}
@@ -86,7 +86,7 @@ const LoginScreen = ({navigation}) => {
 
       <FormButton
         buttonTitle="Sign In"
-        onPress={() => handleSubmit() }
+        onPress={() => navigation.navigate('Home') }
         
       />
 
@@ -95,12 +95,12 @@ const LoginScreen = ({navigation}) => {
       </TouchableOpacity>
       
       
-      <SocialButtons
+      {/* <SocialButtons
         googleButtonViewStyle= {LoginStyles.googleSignInBackground} 
         googleLogoStyle= {LoginStyles.googleSignInBackground}
         googleTextStyle= {LoginStyles.googleSignInText}
       
-      />
+      /> */}
       
 
       <TouchableOpacity

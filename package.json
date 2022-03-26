@@ -1,5 +1,5 @@
 {
-  "name": "hotel1",
+  "name": "hotel1partner",
   "version": "1.0.0",
   "scripts": {
     "start": "expo start --dev-client",

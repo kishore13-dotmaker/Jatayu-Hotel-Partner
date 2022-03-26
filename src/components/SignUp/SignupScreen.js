@@ -6,6 +6,7 @@ import DismissKeyboard from '../../utils/DismissKeyboard';
 import SignUpStyles from './SignUpStyles';
 // import { AuthContext } from '../../navigation/AuthProviders';
 import SocialButtons  from "../Buttons/SocialButtons";
+import * as SecureStore from 'expo-secure-store';
 
 
 
@@ -76,30 +77,33 @@ const SignUpScreen = ({navigation}) => {
       body: formBody
     })
 		.then((response) => response.json())
-			.then((responseJson) =>{
-				console.log(responseJson);
+			.then(async(responseJson) =>{
+				await SecureStore.setItemAsync('accessToken',responseJson.accessToken)
+        navigation.replace("Home")
+        console.log(accessToken)
 			})
 			.catch((error)=>{
 				console.error(error);
-			});console.log( JSON.stringify({
-        username: email,
-        password: password,
-        verifyPassword: confirmPassword,
-        hotelName: hotelName,
-        city: city,
-        description: description,
-        star_rating: star_rating,
-        phoneNumber: phoneNumber,
-        address: address,
-        town: town,
-        couple: couple,
-        single: single,
-        superDeluxe: superDeluxe,
-        deluxe: deluxe,
-        luxury: luxury,
+			});
+    //   console.log( JSON.stringify({
+    //     username: email,
+    //     password: password,
+    //     verifyPassword: confirmPassword,
+    //     hotelName: hotelName,
+    //     city: city,
+    //     description: description,
+    //     star_rating: star_rating,
+    //     phoneNumber: phoneNumber,
+    //     address: address,
+    //     town: town,
+    //     couple: couple,
+    //     single: single,
+    //     superDeluxe: superDeluxe,
+    //     deluxe: deluxe,
+    //     luxury: luxury,
   
-			})
-     )
+		// 	})
+    //  )
 }
  
   return (
@@ -192,7 +196,7 @@ const SignUpScreen = ({navigation}) => {
           <FormInput 
             labelValue={single}
             onChangeText={(single) => setSingle(single)}
-            placeholderText="City"
+            placeholderText="Single"
             iconType="pencil"
             
           />
@@ -220,7 +224,7 @@ const SignUpScreen = ({navigation}) => {
 
           <FormButton
             buttonTitle="Sign Up"
-            onPress={() => navigation.navigate('Home') }
+            onPress={() => handleSubmit() }
           />
           </ScrollView>
            </View>

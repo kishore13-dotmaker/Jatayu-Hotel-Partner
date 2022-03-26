@@ -15,6 +15,42 @@ import ProfileStyles from './ProfileStyle';
 
 const ProfileScreen = () => {
 
+  const handleSubmit = () => { 
+    var details = {
+      accessToken: accessToken,
+    }
+    var formBody = [];
+    for (var property in details) {
+      var encodedKey = encodeURIComponent(property);
+      var encodedValue = encodeURIComponent(details[property]);
+      formBody.push(encodedKey + "=" + encodedValue);
+    }
+    formBody = formBody.join("&");
+    fetch('http://172.19.17.164:3000/findUser', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      },
+      body: formBody
+    })
+		.then((response) => response.json())
+    .then( async (responseJson) =>{
+      try {
+        await AsyncStorage.setItem('accessToken',JSON.stringify(responseJson.accessToken))
+        const AccessToken = AsyncStorage.getItem('accessToken')
+        console.log(AccessToken)
+        navigation.replace("Home")
+      } catch (e) {
+        console.log(e)
+      }
+})
+    
+    .catch((error)=>{
+      console.error(error);
+    });
+  }
+
     return (
       <SafeAreaView style={ProfileStyles.container}>
 

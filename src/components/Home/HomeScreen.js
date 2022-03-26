@@ -31,6 +31,7 @@ const Home = ({ navigation }) => {
         backgroundColor={Colors.white}
         barstyle="dark-content"
       />
+      
       <View style={HomeStyles.header}>
         <View>
           <Text style={{ color: Colors.greyHome }}>Location</Text>

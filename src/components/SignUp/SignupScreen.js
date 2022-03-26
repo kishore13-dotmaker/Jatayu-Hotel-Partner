@@ -67,7 +67,7 @@ const SignUpScreen = ({navigation}) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://172.19.17.164:3000//registerHotel', {
+    fetch('http://172.19.17.164:3000/registerHotel', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

@@ -9,7 +9,7 @@ import StripePayment from './src/components/StripePayment/Payment';
 import ProfileScreen from './src/components/UserProfile/Profile'
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
-
+import RegisterRoom from './src/components/SignUp/RegisterRoom';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import Routes from './src/Navigation/Routes';
@@ -90,6 +90,10 @@ const App = () => {
       <Stack.Screen 
       name="ProfileScreen"
       component={ProfileScreen}
+      />
+        <Stack.Screen 
+      name="RegisterRoom"
+      component={RegisterRoom}
       />
       
       

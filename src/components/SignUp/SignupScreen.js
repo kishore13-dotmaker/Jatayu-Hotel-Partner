@@ -42,7 +42,7 @@ const SignUpScreen = ({navigation}) => {
   }
 
   // const {login} = useContext(AuthContext);
-  const handleSubmit = () => { 
+  const handleSubmit = async () => { 
     var details = {
 			username: email,
       password: password,
@@ -78,9 +78,8 @@ const SignUpScreen = ({navigation}) => {
     })
 		.then((response) => response.json())
 			.then(async(responseJson) =>{
-				await SecureStore.setItemAsync('accessToken',responseJson.accessToken)
-        navigation.replace("Home")
-        console.log(accessToken)
+        await SecureStore.setItemAsync('accessToken',responseJson.accessToken)
+        navigation.navigate("RegisterRoom")
 			})
 			.catch((error)=>{
 				console.error(error);

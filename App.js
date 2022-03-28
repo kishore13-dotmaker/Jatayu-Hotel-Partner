@@ -6,7 +6,7 @@ import ForgotPasswordScreen from './src/components/ForgotPassword/ForgotPassword
 import DetailedPage from './src/components/DetailedPage/DetailedPage'
 import Onboarding from './src/components/Onboarding/OnboardingScreen';
 import StripePayment from './src/components/StripePayment/Payment';
-import ProfileScreen from './src/components/UserProfile/Profile'
+import Profile from './src/components/UserProfile/Profile'
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import RegisterRoom from './src/components/SignUp/RegisterRoom';
@@ -88,8 +88,8 @@ const App = () => {
       component={StripePayment}
       />
       <Stack.Screen 
-      name="ProfileScreen"
-      component={ProfileScreen}
+      name="Profile"
+      component={Profile}
       />
         <Stack.Screen 
       name="RegisterRoom"

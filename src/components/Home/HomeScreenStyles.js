@@ -21,7 +21,28 @@ const HomeStyles = StyleSheet.create({
         paddingLeft: 20,
         paddingVertical: 20
     },
-    
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+      },
+      buttonOpen: {
+        backgroundColor: "#F194FF",
+      },
+      buttonClose: {
+        backgroundColor: "#2196F3",
+      },
+      textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+      },
+      input: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+      },
 })
 
 export default HomeStyles;

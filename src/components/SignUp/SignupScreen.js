@@ -68,7 +68,7 @@ const SignUpScreen = ({navigation}) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://172.19.17.164:3000/registerHotel', {
+    fetch('http://172.17.206.12:3000/registerHotel', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -78,6 +78,7 @@ const SignUpScreen = ({navigation}) => {
     })
 		.then((response) => response.json())
 			.then(async(responseJson) =>{
+        console.log(responseJson)
         await SecureStore.setItemAsync('accessToken',responseJson.accessToken)
         navigation.navigate("RegisterRoom")
 			})

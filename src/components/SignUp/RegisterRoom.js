@@ -8,7 +8,7 @@ import SignUpStyles from './SignUpStyles';
 import SocialButtons  from "../Buttons/SocialButtons";
 import * as SecureStore from 'expo-secure-store';
 
-const RegisterRoom = (navigation) =>{
+const RegisterRoom = ({navigation}) =>{
     const [category, setCategory]= useState();
     const [beds, setBeds]= useState();
     const [price, setPrice]= useState();
@@ -33,7 +33,7 @@ const RegisterRoom = (navigation) =>{
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://172.19.17.164:3000/newRoom', {
+    fetch('http://172.17.206.12:3000/newRoom', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -93,10 +93,10 @@ const RegisterRoom = (navigation) =>{
             buttonTitle="Update Rooms"
             onPress={() => handleSubmit() }
           />
-           {/* <FormButton
+           <FormButton
             buttonTitle="Login Page"
             onPress={() => navigation.navigate("LoginScreen")}
-          /> */}
+          />
         </ScrollView>
            </View>
     </DismissKeyboard>

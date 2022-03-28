@@ -30,7 +30,7 @@ const LoginScreen = ({navigation}) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://172.19.17.164:3000/loginHotel', {
+    fetch('http://172.17.206.12:3000/loginHotel', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -41,9 +41,7 @@ const LoginScreen = ({navigation}) => {
 		.then((response) => response.json())
     .then( async (responseJson) =>{
       try {
-        await AsyncStorage.setItem('accessToken',JSON.stringify(responseJson.accessToken))
-        const AccessToken = AsyncStorage.getItem('accessToken')
-        console.log(AccessToken)
+        await AsyncStorage.setItem('accessToken',responseJson.accessToken)
         navigation.replace("Home")
       } catch (e) {
         console.log(e)
@@ -86,7 +84,7 @@ const LoginScreen = ({navigation}) => {
 
       <FormButton
         buttonTitle="Sign In"
-        onPress={() => navigation.navigate('Home') }
+        onPress={() => handleSubmit()}
         
       />
 

@@ -81,7 +81,7 @@ const Profile = ({ navigation }) => {
     //   formBody.push(encodedKey + "=" + encodedValue);
     // }
     // formBody = formBody.join("&");
-    fetch("http://172.17.206.12:3000/uploadProfile", {
+    fetch("http://172.17.204.8:3000/uploadProfile", {
       method: "POST",
       headers: {
         'Accept': 'application/json',
@@ -111,7 +111,7 @@ const Profile = ({ navigation }) => {
             <Title style={[ProfileStyles.title, {
               marginTop: 15,
               marginBottom: 5,
-            }]}>{Name}</Title>
+            }]}>{hotelName}</Title>
             <Caption style={ProfileStyles.caption}>{username}</Caption>
           </View>
         </View>
@@ -162,7 +162,5 @@ const Profile = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-
-
 export default Profile;
 

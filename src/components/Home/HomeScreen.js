@@ -18,7 +18,6 @@ import SearchBar from "../SearchBar/SerachBar";
 import ListOptions from "../ListOptions/ListOptions";
 import Categories from "../Categories/Categories";
 import Card from "../ShopCards/card";
-import shops from "../consts/shops";
 import * as SecureStore from 'expo-secure-store';
 
 const { width } = Dimensions.get("screen");
@@ -27,13 +26,14 @@ const Home = ({ navigation }) => {
 
   const [fromDate,setFromDate]=useState();
   const [toDate,setToDate]=useState();
+  const [booking,setBooking]=useState();
 
   const handleSubmit =async () => { 
-    var accessToken = await SecureStore.getItemAsync("accessToken");
+    var accessToken = await SecureStore.getItemAsync('accessToken');
     var details = {
       todate: toDate,
       fromdate: fromDate,
-      accessToken: accessToken
+      accessToken: accessToken,
     }
     var formBody = [];
     for (var property in details) {
@@ -42,7 +42,7 @@ const Home = ({ navigation }) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://172.19.17.164:3000/findBookings', {
+    fetch('http://172.17.204.83:3000/findBookings', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -51,24 +51,25 @@ const Home = ({ navigation }) => {
       body: formBody
     })
 		.then((response) => response.json())
-    .then( async (responseJson) =>{
+    .then( async (response) =>{
       try {
-        console.log(responseJson)
+        // console.log(response)
+        setBooking(response.checkIn)
       } catch (e) {
         console.log(e)
       }
-})
-    
-    .catch((error)=>{
+}).catch((error)=>{
       console.error(error);
     });
   }
+
   const hotelProfile = async () => {
     var accessToken = await SecureStore.getItemAsync("accessToken");
+    // console.log(accessToken)
     var details = {
       accessToken: accessToken,
     };
-    console.log(details);
+    // console.log(details);
     var formBody = [];
     for (var property in details) {
       var encodedKey = encodeURIComponent(property);
@@ -76,7 +77,7 @@ const Home = ({ navigation }) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch("http://172.17.206.12:3000/findHotel", {
+    fetch("http://172.17.204.83:3000/findHotel", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -85,10 +86,10 @@ const Home = ({ navigation }) => {
       body: formBody,
     })
       .then((response) => response.json())
-      .then(async (response) => {
-        console.log(response)
-        await SecureStore.setItemAsync("username", response.hotel.username);
-        await SecureStore.setItemAsync("hotelName", response.hotel.hotelName);
+      .then(async (responseJson) => {
+        // console.log(response)
+        await SecureStore.setItemAsync("username", responseJson.hotel.username);
+        await SecureStore.setItemAsync("hotelName", responseJson.hotel.hotelName);
         navigation.navigate("Profile");
       });
   };
@@ -134,20 +135,18 @@ const Home = ({ navigation }) => {
                 style={[HomeStyles.button, HomeStyles.buttonClose]}
                 onPress={() => handleSubmit()}
               >
-                <Text style={HomeStyles.textStyle}>Confirm Locatoin</Text>
+                <Text style={HomeStyles.textStyle}>Confirm Date</Text>
               </Pressable>
+              
         <FlatList
           snapToInterval={width - 20}
           contentontainerStyle={HomeStyles.contentontainerStyle}
           showsHorizontalScrollIndicator={false}
           vertical={true}
-          data={shops}
+          data={booking}
+          keyExtractor={( item , index) => {return item._id}}
           renderItem={({ item }) => (
-            <Pressable
-              onPress={() => navigation.navigate("DetailedPage", item)}
-            >
               <Card item={item} />
-            </Pressable>
           )}
         />
     </SafeAreaView>

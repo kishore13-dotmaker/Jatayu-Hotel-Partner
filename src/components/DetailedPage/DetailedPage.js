@@ -6,7 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import Colors from "../../assets/colors/colors";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import PhoneImage from "./PhoneImage";
+import HotelImage from "./HotelImage";
 import FormButton from '../Buttons/FormButton';
 
 

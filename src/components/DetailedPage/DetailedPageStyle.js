@@ -55,7 +55,7 @@ const DetailsStyles = StyleSheet.create({
     marginTop: 15,
     color: Colors.greyHome,
   },
-  phoneImage: {
+  hotelImage: {
     width: width / 3 - 20,
     height: 80,
     marginRight: 10,

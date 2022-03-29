@@ -6,7 +6,7 @@ import DismissKeyboard from '../../utils/DismissKeyboard';
 import LoginStyles from './LoginStyles';
 // import { AuthContext } from '../../navigation/AuthProviders';
 import SocialButtons  from "../Buttons/SocialButtons";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 
 
 const LoginScreen = ({navigation}) => {
@@ -30,7 +30,7 @@ const LoginScreen = ({navigation}) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://172.17.206.12:3000/loginHotel', {
+    fetch('http://172.17.204.83:3000/loginHotel', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -41,7 +41,7 @@ const LoginScreen = ({navigation}) => {
 		.then((response) => response.json())
     .then( async (responseJson) =>{
       try {
-        await AsyncStorage.setItem('accessToken',responseJson.accessToken)
+        await SecureStore.setItemAsync('accessToken',responseJson.accessToken)
         navigation.replace("Home")
       } catch (e) {
         console.log(e)

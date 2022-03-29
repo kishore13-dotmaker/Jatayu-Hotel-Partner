@@ -28,6 +28,7 @@ const SignUpScreen = ({navigation}) => {
   const [superDeluxe, setSuperDeluxe] = useState();
   const [deluxe, setDeluxe] = useState();
   const [luxury, setLuxury] = useState();
+  const [image, setImage] = useState();
 
   const getMyObject = async () => {
     try {
@@ -59,7 +60,7 @@ const SignUpScreen = ({navigation}) => {
       superDeluxe: superDeluxe,
       deluxe: deluxe,
       luxury: luxury,
-
+      image: image
     }
     var formBody = [];
     for (var property in details) {
@@ -68,7 +69,7 @@ const SignUpScreen = ({navigation}) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://172.17.206.12:3000/registerHotel', {
+    fetch('http://172.17.204.83:3000/registerHotel', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -221,7 +222,13 @@ const SignUpScreen = ({navigation}) => {
             iconType="pencil"
             
           />
-
+           <FormInput 
+            labelValue={image}
+            onChangeText={(image) => setImage(image)}
+            placeholderText="Image Link"
+            iconType="pencil"
+            
+          />
           <FormButton
             buttonTitle="Sign Up"
             onPress={() => handleSubmit() }

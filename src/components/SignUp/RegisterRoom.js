@@ -33,7 +33,7 @@ const RegisterRoom = ({navigation}) =>{
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://172.17.206.12:3000/newRoom', {
+    fetch('http://172.17.204.83:3000/newRoom', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

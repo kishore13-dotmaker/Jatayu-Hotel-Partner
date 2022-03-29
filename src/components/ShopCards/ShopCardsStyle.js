@@ -6,7 +6,7 @@ const {width} = Dimensions.get('screen')
 
 const ShopCardsStyle = StyleSheet.create({
     card:{
-        height: 250,
+        height: 150,
         backgroundColor: Colors.white,
         elevation: 10,
         width: width-40,
@@ -30,12 +30,14 @@ const ShopCardsStyle = StyleSheet.create({
     },
     CardTextTitle:{
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        
     },
     CardTextRating:{
         fontSize: 16,
         fontWeight: 'bold',
-        color: Colors.blueHome
+        color: Colors.blueHome,
+        
     },
     CardTextLocation:{
         fontSize: 14,

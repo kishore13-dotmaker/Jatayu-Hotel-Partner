@@ -8,8 +8,8 @@ import SignUpStyles from './SignUpStyles';
 import SocialButtons  from "../Buttons/SocialButtons";
 import * as SecureStore from 'expo-secure-store';
 
-const RegisterRoom = ({navigation}) =>{
-    const [category, setCategory]= useState("single");
+const RegisterRoomSuperDeluxe = ({navigation}) =>{
+    const [category, setCategory]= useState("superDeluxe");
     const [beds, setBeds]= useState();
     const [price, setPrice]= useState();
     const [number, setNumber]= useState();
@@ -43,8 +43,7 @@ const RegisterRoom = ({navigation}) =>{
     })
 		.then((response) => response.json())
 			.then(async(responseJson) =>{
-        navigation.navigate("RegisterRoomCouple")
-        
+                navigation.navigate("RegisterRoomLuxury")
 			})
 			.catch((error)=>{
 				console.error(error);
@@ -57,7 +56,7 @@ const RegisterRoom = ({navigation}) =>{
 
         <FormInput 
             labelValue={category}
-            // 
+            // onChangeText={(category) => setCategory(category)}
             editable={false}
             placeholderText="Category"
             iconType="pencil"
@@ -105,4 +104,4 @@ const RegisterRoom = ({navigation}) =>{
         )
 }
 
-export default RegisterRoom;
+export default RegisterRoomSuperDeluxe;

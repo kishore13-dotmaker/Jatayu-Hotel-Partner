@@ -10,6 +10,10 @@ import Profile from './src/components/UserProfile/Profile'
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import RegisterRoom from './src/components/SignUp/RegisterRoom';
+import RegisterRoomDeluxe from './src/components/SignUp/RegisterRoomDeluxe';
+import RegisterRoomCouple from './src/components/SignUp/RegisterRoomCouple';
+import RegisterRoomSuperDeluxe from './src/components/SignUp/RegisterRoomSuperDeluxe';
+import RegisterRoomLuxury from './src/components/SignUp/RegisterRoomLuxury';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import Routes from './src/Navigation/Routes';
@@ -95,6 +99,23 @@ const App = () => {
       name="RegisterRoom"
       component={RegisterRoom}
       />
+       <Stack.Screen 
+      name="RegisterRoomCouple"
+      component={RegisterRoomCouple}
+      />
+        <Stack.Screen 
+      name="RegisterRoomDeluxe"
+      component={RegisterRoomDeluxe}
+      />
+        <Stack.Screen 
+      name="RegisterRoomSuperDeluxe"
+      component={RegisterRoomSuperDeluxe}
+      />
+        <Stack.Screen 
+      name="RegisterRoomLuxury"
+      component={RegisterRoomLuxury}
+      />
+      
       
       
 

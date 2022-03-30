@@ -42,7 +42,7 @@ const Home = ({ navigation }) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://172.17.204.83:3000/findBookings', {
+    fetch('http://3.89.108.233:3000/findBookings', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

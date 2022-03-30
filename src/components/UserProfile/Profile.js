@@ -132,31 +132,13 @@ const Profile = ({ navigation }) => {
         </View>
       </View>
       <View >
-        {/* <TouchableRipple onPress={() => {}}>
+        <TouchableRipple onPress={() => navigation.replace('Login')}>
           <View style={ProfileStyles.menuItem}>
-            <Icon name="heart-outline" color="#FF6347" size={25}/>
-            <Text style={ProfileStyles.menuItemText}>Your Favorites</Text>
+            <Icon name="close" color="#FF6347" size={25}/>
+            <Text style={ProfileStyles.menuItemText}>Logout</Text>
           </View>
-        </TouchableRipple> */}
-        {/* <TouchableRipple onPress={() => {}}>
-          <View style={ProfileStyles.menuItem}>
-            <Icon name="credit-card" color="#FF6347" size={25}/>
-            <Text style={ProfileStyles.menuItemText}>Payment</Text>
-          </View>
-        </TouchableRipple> */}
-        {/* <TouchableRipple onPress={()=>{}}>
-          <View style={ProfileStyles.menuItem}>
-            <Icon name="share-outline" color="#FF6347" size={25}/>
-            <Text style={ProfileStyles.menuItemText}>Tell Your Friends</Text>
-          </View>
-        </TouchableRipple> */}
-
-        {/* <TouchableRipple onPress={() => navigation.navigate("BookingHistory")}>
-          <View style={ProfileStyles.menuItem}>
-            <Icon name="account-check-outline" color="#000" size={25} />
-            <Text style={ProfileStyles.menuItemText}>Booking History</Text>
-          </View>
-        </TouchableRipple> */}
+        </TouchableRipple>
+       
 
       </View>
     </SafeAreaView>

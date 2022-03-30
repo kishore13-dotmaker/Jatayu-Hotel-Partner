@@ -77,7 +77,7 @@ const Home = ({ navigation }) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch("http://172.17.204.83:3000/findHotel", {
+    fetch("http://3.89.108.233:3000/findHotel", {
       method: "POST",
       headers: {
         Accept: "application/json",

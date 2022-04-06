@@ -61,6 +61,7 @@ const Home = ({ navigation }) => {
 }).catch((error)=>{
       console.error(error);
     });
+
   }
 
   const hotelProfile = async () => {

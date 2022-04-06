@@ -12,7 +12,7 @@ export default function Cards(booking){
     return(
     
       <View style={ShopCardsStyle.card}> 
-          <Image source={booking.item.image} style={ShopCardsStyle.cardImage}/>
+          {/* <Image source={booking.item.image} style={ShopCardsStyle.cardImage}/> */}
           <View style={ShopCardsStyle.CardTextView}> 
           <Text style={ShopCardsStyle.CardTextTitle}> {booking.item.bookingName} </Text>
           <View style={{flexDirection :'row'}}>

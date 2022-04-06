@@ -79,7 +79,7 @@ const SignUpScreen = ({navigation}) => {
     })
 		.then((response) => response.json())
 			.then(async(responseJson) =>{
-        console.log(responseJson)
+        // console.log(responseJson)
         await SecureStore.setItemAsync('accessToken',responseJson.accessToken)
         navigation.navigate("RegisterRoom")
 			})

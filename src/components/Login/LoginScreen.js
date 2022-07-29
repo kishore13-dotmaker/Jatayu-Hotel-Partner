@@ -7,7 +7,7 @@ import LoginStyles from './LoginStyles';
 // import { AuthContext } from '../../navigation/AuthProviders';
 import SocialButtons  from "../Buttons/SocialButtons";
 import * as SecureStore from 'expo-secure-store';
-
+import {ip} from '../Home/IpAddress'
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState();
@@ -30,7 +30,7 @@ const LoginScreen = ({navigation}) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://3.89.108.233:3000/loginHotel', {
+    fetch(ip+'/loginHotel', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

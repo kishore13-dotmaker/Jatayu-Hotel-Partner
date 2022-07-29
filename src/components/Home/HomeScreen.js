@@ -19,7 +19,7 @@ import ListOptions from "../ListOptions/ListOptions";
 import Categories from "../Categories/Categories";
 import Card from "../ShopCards/card";
 import * as SecureStore from 'expo-secure-store';
-
+import {ip} from "./IpAddress"
 const { width } = Dimensions.get("screen");
 
 const Home = ({ navigation }) => {
@@ -42,7 +42,7 @@ const Home = ({ navigation }) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch('http://3.89.108.233:3000/findBookings', {
+    fetch(ip+'/findBookings', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -53,7 +53,6 @@ const Home = ({ navigation }) => {
 		.then((response) => response.json())
     .then( async (response) =>{
       try {
-        // console.log(response)
         setBooking(response.checkIn)
       } catch (e) {
         console.log(e)
@@ -66,11 +65,9 @@ const Home = ({ navigation }) => {
 
   const hotelProfile = async () => {
     var accessToken = await SecureStore.getItemAsync("accessToken");
-    // console.log(accessToken)
     var details = {
       accessToken: accessToken,
     };
-    // console.log(details);
     var formBody = [];
     for (var property in details) {
       var encodedKey = encodeURIComponent(property);
@@ -78,7 +75,7 @@ const Home = ({ navigation }) => {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
-    fetch("http://3.89.108.233:3000/findHotel", {
+    fetch(ip+"/findHotel", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -88,7 +85,6 @@ const Home = ({ navigation }) => {
     })
       .then((response) => response.json())
       .then(async (responseJson) => {
-        // console.log(response)
         await SecureStore.setItemAsync("username", responseJson.hotel.username);
         await SecureStore.setItemAsync("hotelName", responseJson.hotel.hotelName);
         navigation.navigate("Profile");
@@ -96,11 +92,11 @@ const Home = ({ navigation }) => {
   };
   return (
     <SafeAreaView style={HomeStyles.safeArea}>
-      {/* <StatusBar
+       <StatusBar
         translucent={false}
         backgroundColor={Colors.white}
         barstyle="dark-content"
-      /> */}
+      /> 
       
       <View style={HomeStyles.header}>
         <View>
